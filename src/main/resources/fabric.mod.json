@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "id": "levelsystem",
+  "version": "${version}",
+
+  "name": "Leveling System",
+  "description": "A leveling system that takes after runescape. allows leveling skills correlating to tasks in minecraft.",
+  "authors": [
+    "Master_Cash"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/mastercash/level-system"
+  },
+
+  "license": "CC0-1.0",
+  "icon": "assets/modid/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "io.github.mastercash.levelsystem.Main"
+    ],
+    "server": [
+      "io.github.mastercash.levelsystem.Main"
+    ],
+    "cardinal-components-entity": [
+      "io.github.mastercash.levelsystem.components.StatComponents"
+    ]
+  },
+  "mixins": [
+    "modid.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "minecraft": "1.17.x",
+    "java": ">=16"
+  },
+
+  "custom": {
+    "cardinal-components": [
+      "levelsystem:brewer",
+      "levelsystem:builder",
+      "levelsystem:farmer",
+      "levelsystem:fisher",
+      "levelsystem:miner",
+      "levelsystem:slayer",
+      "levelsystem:tamer",
+      "levelsystem:logger"
+    ]
+  }
+}
