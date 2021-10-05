@@ -4,7 +4,6 @@
   "package": "io.github.mastercash.levelsystem.mixins",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
-    "StatServerPlayerManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

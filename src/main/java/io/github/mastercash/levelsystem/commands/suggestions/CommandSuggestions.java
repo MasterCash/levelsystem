@@ -11,7 +11,14 @@ import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import net.minecraft.command.CommandSource;
 import net.minecraft.server.command.ServerCommandSource;
 
+/**
+ * TODO: Comment
+ */
 public abstract class CommandSuggestions implements SuggestionProvider<ServerCommandSource> {
+  /**
+   * 
+   * @return
+   */
   public abstract List<String> suggestions();
   
   @Override

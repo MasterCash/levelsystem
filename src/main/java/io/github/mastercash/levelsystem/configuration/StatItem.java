@@ -4,12 +4,12 @@ import io.github.mastercash.levelsystem.utils.Stats;
 
 public class StatItem {
   public Stats Stat;
-  public Double EXP;
+  public Float EXP;
 
   public StatItem(Stats stat) {
-    this(stat, 0.0);
+    this(stat, 0.0f);
   }
-  public StatItem(Stats stat, Double exp) {
+  public StatItem(Stats stat, Float exp) {
     this.Stat = stat;
     this.EXP = exp;
   }

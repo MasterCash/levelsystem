@@ -9,6 +9,9 @@ import net.minecraft.util.Identifier;
 import static io.github.mastercash.levelsystem.Constants.MOD_ID;
 
 
+/**
+ * TODO: Comment
+ */
 public class StatConstants {
   private static Map<String, Identifier> ids = new HashMap<>(); 
   

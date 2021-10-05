@@ -2,6 +2,9 @@ package io.github.mastercash.levelsystem.components.base;
 
 import dev.onyxstudios.cca.api.v3.component.Component;
 
+/**
+ * Stat Component on Player entity
+ */
 public interface StatComponent extends Component {
   /**
    * gets the stat value

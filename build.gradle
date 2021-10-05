@@ -20,6 +20,14 @@ repositories {
 		name = "Ladysnake Mods"
 		url = 'https://ladysnake.jfrog.io/artifactory/mods'
 	}
+	maven {
+		name = "Cash Mods"
+		url = "https://maven.pkg.github.com/mastercash/cash-config"
+		credentials {
+			username = System.getenv("GITHUB_ACTOR")
+			password = System.getenv("GITHUB_TOKEN")
+		}
+	}
 	mavenCentral()
 }
 
@@ -35,8 +43,8 @@ dependencies {
 	modApi "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:${project.cardinal_version}"
 	modImplementation "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:${project.cardinal_version}"
 
-	modImplementation "com.oroarmor:oro-config-fabric:${project.oro_config_version}"
-	include "com.oroarmor:oro-config-fabric:${project.oro_config_version}"
+	modImplementation "io.github.mastercash:cash-config:${project.config_version}"
+	include "io.github.mastercash:cash-config:${project.config_version}"
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.
 }

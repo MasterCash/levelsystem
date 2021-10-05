@@ -1,57 +1,72 @@
 package io.github.mastercash.levelsystem.utils;
 
+import java.util.NoSuchElementException;
+
 import dev.onyxstudios.cca.api.v3.component.ComponentKey;
 import io.github.mastercash.levelsystem.components.StatComponents;
-import io.github.mastercash.levelsystem.components.StatConstants;
 import io.github.mastercash.levelsystem.components.base.StatComponent;
 import net.minecraft.entity.Entity;
-import net.minecraft.util.Identifier;
 
+/**
+ * TODO: Comment
+ */
 public class Stat {
-  public static void Increment(Identifier id, Entity provider, float value) {
-    var comp = get(id);
-    if(comp != null) {
-      var stat = comp.get(provider);
-      stat.Increment(value);
-    }
+  /**
+   * 
+   * @param stat
+   * @param provider
+   * @param value
+   * @throws NoSuchElementException
+   * @throws ClassCastException
+   */
+  public static void Increment(Stats stat, Entity provider, float value) throws NoSuchElementException, ClassCastException {
+    var compKey = get(stat);
+    var comp = compKey.get(provider);
+    comp.Increment(value);
   }
 
-  public static void Decrement(Identifier id, Entity provider, float value) {
-    var comp = get(id);
-    if(comp != null) {
-      var stat = comp.get(provider);
-      stat.Decrement(value);
-    }
+  /**
+   * 
+   * @param stat
+   * @param provider
+   * @param value
+   */
+  public static void Decrement(Stats stat, Entity provider, float value) throws NoSuchElementException, ClassCastException {
+    var compKey = get(stat);
+    var comp = compKey.get(provider);
+    comp.Decrement(value);
   }
 
-  public static float Get(Identifier id, Entity provider) {
-    var comp = get(id);
-    if(comp != null) {
-      var stat = comp.get(provider);
-      return stat.getValue();
-    }
-    return 0;
+  /**
+   * 
+   * @param stat
+   * @param provider
+   * @return
+   */
+  public static float Get(Stats stat, Entity provider) throws NoSuchElementException, ClassCastException {
+    var compKey = get(stat);
+    var comp = compKey.get(provider);
+    return comp.getValue();
   }
 
-  public static boolean Exists(Identifier id, Entity provider) {
-    var comp = get(id);
-    if(comp == null) return false;
-    var stat = comp.getNullable(provider);
-    return stat != null;
+  /**
+   * @param stat
+   * @param provider
+   * @return
+   */
+  public static boolean Exists(Stats stat, Entity provider) {
+    var compKey = get(stat);
+    var comp = compKey.getNullable(provider);
+    return comp != null;
   }
 
-  private static ComponentKey<StatComponent> get(Identifier id) {
-    /*
-    if(id.equals(StatConstants.BREWER)) return StatComponents.BREWER;
-    if(id.equals(StatConstants.MINER)) return StatComponents.MINER;
-    if(id.equals(StatConstants.LOGGER)) return StatComponents.LOGGER;
-    if(id.equals(StatConstants.BUILDER)) return StatComponents.BUILDER;
-    if(id.equals(StatConstants.FARMER)) return StatComponents.FARMER;
-    if(id.equals(StatConstants.FISHER)) return StatComponents.FISHER;
-    if(id.equals(StatConstants.SLAYER)) return StatComponents.SLAYER;
-    if(id.equals(StatConstants.TAMER)) return StatComponents.TAMER;
-    */
-    return null;
+  /**
+   * 
+   * @param stat
+   * @return
+   */
+  private static ComponentKey<StatComponent> get(Stats stat) {
+    return StatComponents.StatComponentKeys.get(stat);
   }
 
 }

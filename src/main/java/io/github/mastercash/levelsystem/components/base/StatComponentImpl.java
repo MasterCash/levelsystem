@@ -3,6 +3,9 @@ package io.github.mastercash.levelsystem.components.base;
 import io.github.mastercash.levelsystem.utils.Stats;
 import net.minecraft.nbt.NbtCompound;
 
+/**
+ * TODO: Comment
+ */
 public final class StatComponentImpl implements StatComponent {
   private String key = "";
   private float value = (float) 0;
