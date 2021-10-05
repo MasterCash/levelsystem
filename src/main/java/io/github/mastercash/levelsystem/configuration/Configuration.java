@@ -23,12 +23,12 @@ import static com.google.common.collect.ImmutableList.of;
 
 public class Configuration {
   public static Config CONFIG = new Config(getDefaultConfig(), new File(FabricLoader.getInstance().getConfigDir().toFile(), Constants.MOD_ID + ".json"));
-  public static Map<Identifier, Set<StatItem>> getUseItem() { return getGroup("useItem"); }
-  public static Map<Identifier, Set<StatItem>> getBreakBlock() { return getGroup("breakBlock"); }
-  public static Map<Identifier, Set<StatItem>> getKillEntity() { return getGroup("killEntity"); }
-  public static Map<Identifier, Set<StatItem>> getPlaceBlock() { return getGroup("placeBlock"); }
+  public static Map<Identifier, Set<StatItem>> getUseItem() { return getActionGroup("useItem"); }
+  public static Map<Identifier, Set<StatItem>> getBreakBlock() { return getActionGroup("breakBlock"); }
+  public static Map<Identifier, Set<StatItem>> getKillEntity() { return getActionGroup("killEntity"); }
+  public static Map<Identifier, Set<StatItem>> getPlaceBlock() { return getActionGroup("placeBlock"); }
 
-  private static Map<Identifier, Set<StatItem>> getGroup(String groupID) {
+  private static Map<Identifier, Set<StatItem>> getActionGroup(String groupID) {
     var map = new HashMap<Identifier, Set<StatItem>>();
     // get the group
     var group = (ConfigGroup) CONFIG.getItem(groupID, Type.GROUP);
@@ -87,13 +87,15 @@ public class Configuration {
     ConfigGroup useItem = new ConfigGroup("useItem", null);
     ConfigGroup breakBlock = new ConfigGroup("breakBlock", null);
     ConfigGroup killEntity = new ConfigGroup("killEntity", null);
+    ConfigGroup placeBlock = new ConfigGroup("placeBlock", null);
+
     for(var stat : Stats.values()) {
       useItem.AddItem(new ConfigList(stat.getID(), null, Type.GROUP));
       breakBlock.AddItem(new ConfigList(stat.getID(), null, Type.GROUP));
       killEntity.AddItem(new ConfigList(stat.getID(), null, Type.GROUP));
     }
 
-    return of(version, useItem, breakBlock, killEntity);
+    return of(version, useItem, breakBlock, killEntity, placeBlock);
   }
   private static String Dot(String first, String... items) {
     String path = first;
